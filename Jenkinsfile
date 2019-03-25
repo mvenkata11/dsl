@@ -1,8 +1,8 @@
 pipeline{
 
-agent {
+agent any {
 
-node{
+stages{
     stage('gitcheckout'){
         
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/asquarezone/spring-petclinic.git']]])
@@ -11,24 +11,18 @@ node{
     
     stage('static code analysis'){
         
-    
-    withSonarQubeEnv {
-       
-        bat """${sonar_scanner}/bin/sonar-scanner.bat -D sonar.projectKey=myProject1 -D sonar.sources=. -D sonar.java.binaries=."""
-      
-
-        }
+    bat 'echo "stage2"'
+   
     }
 
    stage( 'build'){
        
-     bat 'mvn clean package'  
+     bat 'echo "stage3"'  
    }
    
    stage('Publish'){
             
-                archiveArtifacts 'target/springboot-petclinic-1.4.1.jar'
-                junit 'target/surefire-reports/*.xml'
+            bat 'echo "stage4"'       
                 
             }
 
