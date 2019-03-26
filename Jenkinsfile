@@ -2,22 +2,22 @@ pipeline {
 	agent any
 	stages {
 		stage ('build') {
-			bat '"build"'  
+			"build"  
 		}
 		stage ('test: integration-&-quality') {
-			bat '"test: integration-&-quality"' 
+			"test: integration-&-quality" 
 		}
 		stage ('test: functional') {
-			bat '"test: functional"' 
+			"test: functional" 
 		}
 		stage ('test: load-&-security') {
-			bat '"test: load-&-security"' 
+			"test: load-&-security" 
 		}
 		stage ('approval') {
-			bat ' "approval"' 
+			"approval" 
 		}
 		stage ('deploy:prod') {
-			bat '"deploy:prod"' 
+			"deploy:prod" 
 		}
 	}
 }
