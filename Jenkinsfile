@@ -20,4 +20,5 @@ pipeline {
 			bat 'echo "deploy:prod"' 
 		}
 	}
+}
 
